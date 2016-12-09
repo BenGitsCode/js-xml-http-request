@@ -9,6 +9,8 @@ $(() => {
     console.error(error);
   };
 
+// gets sign up form from the DOM
+// adds a handler for the submit event on that form
   const onSignUp = (response) => {
     console.log(response);
     console.log('Signed up');
@@ -44,11 +46,14 @@ $(() => {
     e.preventDefault(); // prevet default submit action
     let formData = getFormFields(this); // get data from form
 
+    // define successs handler
     const onSignUpSuccess = function (response) {
+     // call sign up success handler
       onSignUp(response);
+      // call sign in
       signIn(formData, onSignIn, onError);
     };
-
+    // call sign up
     signUp(formData, onSignUpSuccess, onError);
   });
 });
